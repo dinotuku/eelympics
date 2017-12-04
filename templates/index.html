@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>EElympics</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static',filename='css/materialize.min.css') }}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}" type="text/css">
+  <link rel="shortcut icon" href="{{ url_for('static',filename='img/favicon.png') }}" type="image/png">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper orange darken-2">
+      <a href="/" class="brand-logo center">EElympics</a>
+    </div>
+  </nav>
+  <main class="valign-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m10 offset-m1 l8 offset-l2">
+          <div class="card z-depth-5">
+            <div class="card-image">
+              <img class="stream" src="{{ url_for('video_feed') }}">
+            </div>
+            <div class="card-content flow-text">
+              {% if result %}
+              <div class="result">
+                <p>{{ result }}</p>
+              </div>
+              {% endif %}
+            </div>
+            <div class="card-action center">
+              <a class="waves-effect waves-light btn orange darken-2" href="/image">
+                <i class="material-icons left">image</i>Image</a>
+              <a class="waves-effect waves-light btn orange darken-2" href="/word">
+                <i class="material-icons left">text_fields</i>Word</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer orange darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        <span class="easteregg-trigger">© 2017 Copyright 我覺得可以</span>
+        <div class="easteregg scale-transition scale-out"><i class="material-icons">sentiment_very_satisfied</i></div>
+      </div>
+    </div>
+  </footer>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/materialize.min.js') }}"></script>
+<script>
+  $(document).ready(function () {
+    console.log('ready');
+    $('.easteregg-trigger').click(function() {
+      if ($('.easteregg').hasClass('scale-out')) {
+        $('.easteregg').removeClass('scale-out');
+      } else {
+        $('.easteregg').addClass('scale-out');
+      }
+    });
+  });
+</script>
+
+</html>
